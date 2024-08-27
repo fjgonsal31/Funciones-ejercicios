@@ -1,128 +1,155 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tutorial Básico: Funciones en JavaScript</title>
-    <link rel="stylesheet" href="css/estilos.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tutorial Básico: Funciones en JavaScript</title>
+  <link rel="stylesheet" href="css/estilos.css">
 </head>
+
 <body>
-    <h1>Tutorial Básico: Funciones en JavaScript</h1>
+  <h1>Tutorial Básico: Funciones en JavaScript</h1>
+  <h2>1. Tipos de funciones</h2>
+  <p>En JavaScript, existen principalmente dos tipos de funciones:</p>
+  <ul>
+    <li><strong>Funciones declarativas</strong>: Se definen usando la palabra clave <code>function</code>.</li>
+    <li><strong>Funciones de expresión</strong>: Se asignan a variables.</li>
+  </ul>
+  <h2>2. Definición de función y expresión de función</h2>
+  <h3>Definición de función (función declarativa):</h3>
+  <div class="example">
+    <pre>
+      <code>
+        function saludar(nombre) {
+          console.log(`Hola, ${nombre}!`);
+        }
 
-    <h2>1. Tipos de funciones</h2>
-    <p>En JavaScript, existen principalmente dos tipos de funciones:</p>
-    <ul>
-        <li><strong>Funciones declarativas</strong>: Se definen usando la palabra clave <code>function</code>.</li>
-        <li><strong>Funciones de expresión</strong>: Se asignan a variables.</li>
-    </ul>
+        saludar("María"); // Salida: Hola, María!
+      </code>
+    </pre>
+  </div>
+  <h3>Expresión de función:</h3>
+  <div class="example">
+    <pre>
+      <code>
+        const saludar = function(nombre) {
+          console.log(`Hola, ${nombre}!`);
+        };
 
-    <h2>2. Definición de función y expresión de función</h2>
-    <h3>Definición de función (función declarativa):</h3>
-    <div class="example">
-        <pre><code>function saludar(nombre) {
-  console.log(`Hola, ${nombre}!`);
-}
+        saludar("Juan"); // Salida: Hola, Juan!
+      </code>
+    </pre>
+  </div>
+  <h2>3. Diferencia entre método y función</h2>
+  <ul>
+    <li><strong>Función</strong>: Es un bloque de código independiente que realiza una tarea específica.</li>
+    <li><strong>Método</strong>: Es una función que está asociada a un objeto.</li>
+  </ul>
+  <p>Ejemplo de método:</p>
+  <div class="example">
+    <pre>
+      <code>
+        const persona = {
+          nombre: "Ana",
+          saludar: function() {
+            console.log(`Hola, soy ${this.nombre}`);
+          }
+        };
 
-saludar("María"); // Salida: Hola, María!</code></pre>
-    </div>
+        persona.saludar(); // Salida: Hola, soy Ana
+      </code>
+    </pre>
+  </div>
+  <h2>4. Parámetros y argumentos</h2>
+  <ul>
+    <li><strong>Parámetros</strong>: Son las variables listadas en la definición de la función.</li>
+    <li><strong>Argumentos</strong>: Son los valores reales que se pasan a la función cuando se invoca.</li>
+  </ul>
+  <div class="example">
+    <pre>
+      <code>
+        function sumar(a, b) { // a y b son parámetros
+          return a + b;
+        }
 
-    <h3>Expresión de función:</h3>
-    <div class="example">
-        <pre><code>const saludar = function(nombre) {
-  console.log(`Hola, ${nombre}!`);
-};
+        console.log(sumar(3, 5)); // 3 y 5 son argumentos. Salida: 8
+      </code>
+    </pre>
+  </div>
+  <h2>5. Parámetros por default</h2>
+  <p>Se pueden asignar valores por defecto a los parámetros:</p>
+  <div class="example">
+    <pre>
+      <code>
+        function saludar(nombre = "Invitado") {
+          console.log(`Hola, ${nombre}!`);
+        }
 
-saludar("Juan"); // Salida: Hola, Juan!</code></pre>
-    </div>
+        saludar(); // Salida: Hola, Invitado!
+        saludar("Pedro"); // Salida: Hola, Pedro!
+      </code>
+    </pre>
+  </div>
+  <h2>6. Funciones que retornan valores</h2>
+  <p>Las funciones pueden devolver valores usando la palabra clave <code>return</code>:</p>
+  <div class="example">
+    <pre>
+      <code>
+        function multiplicar(a, b) {
+          return a * b;
+        }
 
-    <h2>3. Diferencia entre método y función</h2>
-    <ul>
-        <li><strong>Función</strong>: Es un bloque de código independiente que realiza una tarea específica.</li>
-        <li><strong>Método</strong>: Es una función que está asociada a un objeto.</li>
-    </ul>
-    <p>Ejemplo de método:</p>
-    <div class="example">
-        <pre><code>const persona = {
-  nombre: "Ana",
-  saludar: function() {
-    console.log(`Hola, soy ${this.nombre}`);
-  }
-};
+        const resultado = multiplicar(4, 5);
+        console.log(resultado); // Salida: 20
+      </code>
+    </pre>
+  </div>
+  <h2>7. Métodos de propiedad</h2>
+  <p>Son funciones que se definen como propiedades de un objeto:</p>
+  <div class="example">
+    <pre>
+      <code>
+        const calculadora = {
+          sumar: function(a, b) {
+            return a + b;
+          },
+          restar(a, b) { // Sintaxis abreviada
+            return a - b;
+          }
+        };
 
-persona.saludar(); // Salida: Hola, soy Ana</code></pre>
-    </div>
+        console.log(calculadora.sumar(5, 3)); // Salida: 8
+        console.log(calculadora.restar(10, 4)); // Salida: 6
+      </code>
+    </pre>
+  </div>
+  <h2>8. Arrow functions</h2>
+  <p>Son una forma más concisa de escribir funciones:</p>
+  <div class="example">
+    <pre>
+      <code>
+        // Función tradicional
+        const sumar = function(a, b) {
+          return a + b;
+        };
 
-    <h2>4. Parámetros y argumentos</h2>
-    <ul>
-        <li><strong>Parámetros</strong>: Son las variables listadas en la definición de la función.</li>
-        <li><strong>Argumentos</strong>: Son los valores reales que se pasan a la función cuando se invoca.</li>
-    </ul>
-    <div class="example">
-        <pre><code>function sumar(a, b) { // a y b son parámetros
-  return a + b;
-}
+        // Arrow function equivalente
+        const sumarArrow = (a, b) => a + b;
 
-console.log(sumar(3, 5)); // 3 y 5 son argumentos. Salida: 8</code></pre>
-    </div>
+        console.log(sumarArrow(2, 3)); // Salida: 5
 
-    <h2>5. Parámetros por default</h2>
-    <p>Se pueden asignar valores por defecto a los parámetros:</p>
-    <div class="example">
-        <pre><code>function saludar(nombre = "Invitado") {
-  console.log(`Hola, ${nombre}!`);
-}
+        // Arrow function con más de una línea
+        const saludarArrow = (nombre) => {
+          const saludo = `Hola, ${nombre}!`;
+          return saludo;
+        };
 
-saludar(); // Salida: Hola, Invitado!
-saludar("Pedro"); // Salida: Hola, Pedro!</code></pre>
-    </div>
-
-    <h2>6. Funciones que retornan valores</h2>
-    <p>Las funciones pueden devolver valores usando la palabra clave <code>return</code>:</p>
-    <div class="example">
-        <pre><code>function multiplicar(a, b) {
-  return a * b;
-}
-
-const resultado = multiplicar(4, 5);
-console.log(resultado); // Salida: 20</code></pre>
-    </div>
-
-    <h2>7. Métodos de propiedad</h2>
-    <p>Son funciones que se definen como propiedades de un objeto:</p>
-    <div class="example">
-        <pre><code>const calculadora = {
-  sumar: function(a, b) {
-    return a + b;
-  },
-  restar(a, b) { // Sintaxis abreviada
-    return a - b;
-  }
-};
-
-console.log(calculadora.sumar(5, 3)); // Salida: 8
-console.log(calculadora.restar(10, 4)); // Salida: 6</code></pre>
-    </div>
-
-    <h2>8. Arrow functions</h2>
-    <p>Son una forma más concisa de escribir funciones:</p>
-    <div class="example">
-        <pre><code>// Función tradicional
-const sumar = function(a, b) {
-  return a + b;
-};
-
-// Arrow function equivalente
-const sumarArrow = (a, b) => a + b;
-
-console.log(sumarArrow(2, 3)); // Salida: 5
-
-// Arrow function con más de una línea
-const saludarArrow = (nombre) => {
-  const saludo = `Hola, ${nombre}!`;
-  return saludo;
-};
-
-console.log(saludarArrow("Laura")); // Salida: Hola, Laura!</code></pre>
-    </div>
+        console.log(saludarArrow("Laura")); // Salida: Hola, Laura!
+      </code>
+    </pre>
+  </div>
+  <script src="js/01-ejercicios.js"></script>
 </body>
+
 </html>
